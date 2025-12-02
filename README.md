@@ -18,14 +18,16 @@ Visual representations can be found below.
 
 ## 🚀 How to import
 - Create a database named `vacation_rental_db.sql`.
+- (OPTIONAL) Run queries contained in `seed.sql`.
 
 ## 📊 Visual representation (compact) -- See end of readme file for Mermaid
-![](https://github.com/luca-workspace/vacation-rental-db-schema/blob/main/schema.svg)
+![Vacation Rental DB Schema](./schema.svg)
 
 <details>
 <summary>🔻 CLICK HERE FOR MERMAID 🔻</summary>
+
 ```mermaid
-erDiagram
+  erDiagram
     addresses {
         int(11) addressid
         varchar(100) countryname
@@ -314,7 +316,6 @@ erDiagram
         varchar(10) zipcode
         varchar(100) countryname
     }
-    
     %% Users relationships
     users ||--o{ places : "hosts"
     users ||--|| addresses : "has"
@@ -332,29 +333,24 @@ erDiagram
     users ||--o{ guestsreviews : "receives_as_guest"
     users ||--o{ guestsreviews : "writes_as_host"
     users ||--o{ redeemedgiftcards : "redeems"
-    
     %% Address relationships
     addresses ||--|| countries : "located_in"
     addresses ||--|| zipcodes : "has"
     addresses ||--|| cities : "in"
     addresses ||--|| streets : "on"
-    
     %% Geographic relationships
     countries ||--o{ zipcodes : "contains"
     countries ||--o{ identitycards : "issues"
     countries ||--o{ emergencycontacts : "country_code"
     zipcodes ||--o{ cities : "identifies"
     cities ||--o{ streets : "contains"
-    
     %% Identity and emergency contacts
     identitycards ||--|| countries : "issued_by"
     emergencycontacts ||--|| languages : "prefers"
     emergencycontacts ||--|| countries : "country_code"
-    
     %% Languages and interests
     languages ||--o{ userslanguages : "spoken_by"
     interestscategories ||--o{ usersinterests : "interested_by"
-    
     %% Places relationships
     places ||--|| placescategories : "belongs_to"
     places ||--|| placestypesnames : "is_type"
@@ -366,14 +362,11 @@ erDiagram
     places ||--o{ placesunavailabledates : "unavailable_on"
     places ||--o{ trips : "booked_in"
     places ||--o{ wishlistsitems : "wishlisted_in"
-    
     %% Place categories and types
     placescategories ||--o{ placestypes : "has"
     placestypesnames ||--o{ placestypes : "categorized_in"
-    
     %% Place accessibility
     placeaccessibilityoptions ||--o{ placeaccessibilityoptionsimages : "has_images"
-    
     %% Trips relationships
     trips ||--o| conversations : "has"
     trips ||--o{ conversationsmessages : "contains_messages"
@@ -381,18 +374,15 @@ erDiagram
     trips ||--o| payments : "has_payment"
     trips ||--o| payouts : "has_payout"
     trips ||--o| placesreviews : "reviewed_in"
-    
     %% Conversations relationships
     conversations ||--o{ conversationsparticipants : "has_participants"
     conversations ||--o{ conversationsmessages : "contains"
-    
     %% Wishlists relationships
     wishlistsnames ||--o{ wishlistsitems : "contains"
-    
     %% Coupons and payments
     coupons ||--o{ payments : "used_in"
-    
     %% Gift cards
     giftcards ||--o{ redeemedgiftcards : "redeemed_by"
 ```
+
 </details>

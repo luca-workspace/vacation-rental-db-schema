@@ -1,6 +1,6 @@
 -- -----------------------------------------------------
 -- Seed Data for Vacation Rental Platform
--- Author: Luca-Workspace
+-- Author: Luca Lodola
 -- Description: Sample data for testing purposes. 
 --              Includes Users, Places, Bookings, Reviews, and Payments.
 -- -----------------------------------------------------
